@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import './Form.css';
+import { v4 as uuidv4 } from 'uuid';
 
 
-class Phonebook extends Component {
+class ContactForm extends Component {
     state = {
         contacts: [],
-        name: '',
+        name: ''
+        
     };
-    
+
+    nameInputId = uuidv4();
 
     handleChange = e => {
         // const { name } = e.currentTarget;
@@ -15,7 +18,14 @@ class Phonebook extends Component {
     };
     handleSubmit = e => {
         e.preventDefault();
-        console.log(this.state)
+        this.props.onSubmit(this.state);
+        this.reset();
+    };
+    reset = () => {
+        this.setState({
+            contacts: [],
+            name: ''
+        });
     };
 
     render() {
@@ -23,8 +33,15 @@ class Phonebook extends Component {
         return (
     <div>
         <form className="FormContact" onSubmit={this.handleSubmit}>
-          <label>
-           Name <input type="text" name="name" value={this.state.name} onChange={this.handleChange} />
+          <label htmlFor={this.nameInputId}>
+            Name
+            <input
+                type="text"
+                name="name"
+                value={this.state.name}
+                onChange={this.handleChange}
+                id={this.nameInputId}
+            />
           </label>
           {/* <label>
             Депозит <input type="text" name="deposit" value={this.state.deposit} onChange={this.handleChange} />
@@ -37,4 +54,4 @@ class Phonebook extends Component {
 
 }
 
-export default Phonebook;
+export default ContactForm;
