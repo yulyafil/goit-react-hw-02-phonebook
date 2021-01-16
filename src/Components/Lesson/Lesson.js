@@ -33,14 +33,14 @@ class Lesson extends Component {
       deposit: ''
     });
   }
-  // handelNameChange = evt => {
-  //   console.log(evt.currentTarget.value);
+  handelNameChange = evt => {
+    console.log(evt.currentTarget.value);
 
-  //   this.setState({ name: evt.currentTarget.value });
-  // };
-  // handelDepositChange = evt => {
-  //   this.setState({ deposit: evt.currentTarget.value });
-  // }
+    this.setState({ name: evt.currentTarget.value });
+  };
+  handelDepositChange = evt => {
+    this.setState({ deposit: evt.currentTarget.value });
+  }
 
 
   render() {
@@ -61,7 +61,7 @@ class Lesson extends Component {
           <label htmlFor={this.nameInputId}>
             Депозит <input type="text" name="deposit" value={this.state.deposit} onChange={this.handleChange} id={this.nameInputId} />
           </label>
-          <button type="submit" >Add deposit </button>
+          <button type="submit" >Add deposit</button>
         </form>
         <p>Ваш Уровень: </p>
         <label>
